@@ -1,0 +1,17 @@
+@import 'src/styles-vars.scss';
+
+* {
+  //font-family: 'Press Start 2P', monospace;
+  //font-family: VT323, monospace;
+  //font-family: Play, monospace;
+  font-family: Orbitron, monospace;
+  font-weight: 600;
+}
+
+body {
+  font-family: $sans-serif-font !important;
+  background-color: $app-black !important;
+  color: $app-white !important;
+  font-size: 14px !important;
+  padding: 30px;
+}

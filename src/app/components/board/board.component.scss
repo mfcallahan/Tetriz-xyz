@@ -1,0 +1,23 @@
+h1 {
+  font-weight: 800;
+  letter-spacing: 4px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 320px 200px;
+}
+
+.game-board {
+  border: solid 2px;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.play-button {
+  background-color: #4caf50;
+}
