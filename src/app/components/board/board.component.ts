@@ -1,14 +1,14 @@
 import { Component, ViewChild, ElementRef, OnInit, HostListener } from '@angular/core';
-import { KeyEvent } from '../../enums/keyEvent';
-import { ITetromino } from '../../interfaces/iTetromino';
-import { Tetromino } from '../../models/tetromino';
-import { Timer } from '../../models/timer';
-import { GameService } from '../../services/game.service';
-import { Levels } from '../../models/levels';
-import { colors } from '../../consts/colors';
+import { KeyEvent } from 'src/app/enums/keyEvent';
+import { ITetromino } from 'src/app/interfaces/iTetromino';
+import { Tetromino } from 'src/app/models/tetromino';
+import { Timer } from 'src/app/models/timer';
+import { GameService } from 'src/app/services/game.service';
+import { Levels } from 'src/app/models/levels';
+import { colors } from 'src/app/consts/colors';
 
 @Component({
-  selector: 'app-tetriz-board',
+  selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
 })

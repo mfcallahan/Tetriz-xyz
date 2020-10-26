@@ -1,6 +1,6 @@
-import { ITetromino } from '../interfaces/iTetromino';
-import { colors } from '../consts/colors';
-import { shapes } from '../consts/shapes';
+import { ITetromino } from 'src/app/interfaces/iTetromino';
+import { colors } from 'src/app/consts/colors';
+import { shapes } from 'src/app/consts/shapes';
 
 export class Tetromino implements ITetromino {
   x: number;

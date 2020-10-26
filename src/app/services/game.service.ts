@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Point } from '../enums/point';
-import { ITetromino } from '../interfaces/iTetromino';
+import { Point } from 'src/app/enums/point';
+import { ITetromino } from 'src/app/interfaces/iTetromino';
 
 @Injectable({
   providedIn: 'root',

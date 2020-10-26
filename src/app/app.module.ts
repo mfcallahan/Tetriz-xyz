@@ -4,7 +4,7 @@ import { AppComponent } from 'src/app/app.component';
 import { BoardComponent } from 'src/app/components/board/board.component';
 
 @NgModule({
-  declarations: [BoardComponent],
+  declarations: [AppComponent, BoardComponent],
   imports: [],
   providers: [],
   bootstrap: [AppComponent],
