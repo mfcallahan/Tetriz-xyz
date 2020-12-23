@@ -6,31 +6,35 @@ import { ITetromino } from 'src/app/interfaces/iTetromino';
   providedIn: 'root',
 })
 export class GameService {
-  public getEmptyBoard(numRows: number, numCols: number): number[][] {
-    return Array.from({ length: numRows }, () => Array(numCols).fill(0));
-  }
+  public moveIsValid(tetromino: ITetromino, board: number[][], numRows: number, numCols: number): boolean {
+    return tetromino.shape.every((row, dy) => {
+      return row.every((value, dx) => {
+        const x = tetromino.x + dx;
+        const y = tetromino.y + dy;
 
-  public moveIsValid(tetromino: ITetromino, numRows: number, numCols: number): boolean {
-    return tetromino.shape.every((row, y) => {
-      return row.every(
-        (value, x) => value === 0 || (tetromino.x + x >= 0 && tetromino.x + x < numCols && tetromino.y + y < numRows)
-      );
+        return (
+          this.isEmpty(value) ||
+          (this.insideWalls(x, numCols) && this.aboveFloor(y, numRows) && this.notOccupied(board, x, y))
+        );
+      });
     });
   }
 
-  // This method follows the Tetris Guideline for Super Rotation System:
+  // Transpose the matrix; this method follows the Tetris Guideline for Super Rotation System:
   // https://tetris.fandom.com/wiki/SRS
-  public rotate(currentTetromino: ITetromino): ITetromino {
-    const newTetromino: ITetromino = JSON.parse(JSON.stringify(currentTetromino));
-    for (let y = 0; y < newTetromino.shape.length; ++y) {
+  public rotateTetromino(currentTetromino: ITetromino): ITetromino {
+    // Create a deep copy of the current piece
+    const newPosition: ITetromino = JSON.parse(JSON.stringify(currentTetromino));
+
+    for (let y = 0; y < newPosition.shape.length; ++y) {
       for (let x = 0; x < y; ++x) {
-        [newTetromino.shape[x][y], newTetromino.shape[y][x]] = [newTetromino.shape[y][x], newTetromino.shape[x][y]];
+        [newPosition.shape[x][y], newPosition.shape[y][x]] = [newPosition.shape[y][x], newPosition.shape[x][y]];
       }
     }
 
-    newTetromino.shape.forEach((row) => row.reverse());
+    newPosition.shape.forEach((row) => row.reverse());
 
-    return newTetromino;
+    return newPosition;
   }
 
   public getLinesClearedPoints(lines: number, level: number): number {
@@ -46,5 +50,21 @@ export class GameService {
         : 0;
 
     return (level + 1) * lineClearPoints;
+  }
+
+  private isEmpty(value: number): boolean {
+    return value === 0;
+  }
+
+  private insideWalls(x: number, numCols: number): boolean {
+    return x >= 0 && x < numCols;
+  }
+
+  private aboveFloor(y: number, numRows: number): boolean {
+    return y <= numRows;
+  }
+
+  private notOccupied(board: number[][], x: number, y: number): boolean {
+    return board[y] && board[y][x] === 0;
   }
 }
