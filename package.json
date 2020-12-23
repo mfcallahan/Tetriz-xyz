@@ -1,5 +1,5 @@
 {
-  "name": "homepage",
+  "name": "tetriz",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
