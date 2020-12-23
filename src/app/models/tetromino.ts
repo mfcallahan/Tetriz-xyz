@@ -17,7 +17,7 @@ export class Tetromino implements ITetromino {
     this.shape.forEach((row, y) => {
       row.forEach((value, x) => {
         if (value > 0) {
-          // this.x & this.y = tetromino's position on the board
+          // this.x & this.y are tetromino's position on the board
           // x & y position are the positions of the shape
           this.canvasContext.fillRect(this.x + x, this.y + y, 1, 1);
         }
@@ -49,24 +49,23 @@ export class Tetromino implements ITetromino {
     });
   }
 
-  public move(tetromino: ITetromino) {
-    this.x = tetromino.x;
-    this.y = tetromino.y;
-    this.shape = tetromino.shape;
+  public move(newX: number, newY: number, newShape: number[][]) {
+    this.x = newX;
+    this.y = newY;
+    this.shape = newShape;
   }
 
   private spawn() {
     const typeId = this.getRandomTetromino();
     this.color = colors[typeId];
     this.shape = shapes[typeId];
-
-    // TODO: temporary hard code spawn position
-    this.x = 3;
+    // TODO: fix magic numbers here
+    this.x = typeId === 4 ? 4 : 3;
     this.y = 0;
   }
 
   private getRandomTetromino(): number {
-    const totalNumTetrominos = colors.length - 1;
+    const totalNumTetrominos = shapes.length - 1;
     return Math.floor(Math.random() * totalNumTetrominos + 1);
   }
 

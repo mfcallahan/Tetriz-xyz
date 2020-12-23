@@ -1,5 +1,4 @@
 export const shapes = [
-  [],
   //  ▄ ▄ ▄ ▄
   [
     [0, 0, 0, 0],

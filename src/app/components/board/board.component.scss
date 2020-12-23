@@ -26,3 +26,33 @@ sup {
 .play-button {
   background-color: #4caf50;
 }
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .play-button {
+    background-color: #4caf50;
+  }
+
+  .reset-button {
+    background-color: #ff4d4d;
+  }
+
+  .pause-button {
+    background-color: #ffff80;
+
+    &.button-disabled {
+      background-color: #cccccc;
+    }
+  }
+
+  .button {
+    font-size: 16px;
+    padding: 15px 30px;
+    cursor: pointer;
+    width: 140px;
+    border: 1px solid black;
+  }
+}

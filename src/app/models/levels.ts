@@ -1,3 +1,5 @@
+export const linesPerLevel = 10;
+
 export class Levels {
   static readonly 0 = 800;
   static readonly 1 = 720;
